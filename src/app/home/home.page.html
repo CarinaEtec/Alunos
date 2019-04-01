@@ -8,11 +8,9 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item>
-      <ion-label>Aluno01</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Aluno02</ion-label>
+    <ion-item *ngFor="let aluno of alunos">
+      <ion-label>{{aluno.nome}}</ion-label>
+      <ion-label>{{aluno.endereco}}</ion-label>
     </ion-item>
   </ion-list>
-  </ion-content>
+</ion-content>

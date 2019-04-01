@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {HttpErrorResponse} from '@angular/common/http';
 import { Aluno } from '../escola/Aluno';
 import { LoadingController, AlertController } from '@ionic/angular';
+import { AlunosService } from '../providers/alunos.service';
 
 @Component({
   selector: 'app-home',
@@ -11,9 +12,9 @@ import { LoadingController, AlertController } from '@ionic/angular';
 export class HomePage implements OnInit{
   public alunos: Aluno[];
 
-  constructor(public http:HttpClient,
-              private loadingCtrl:LoadingController,
-              private alertCtrl:AlertController){
+  constructor(private loadingCtrl:LoadingController,
+              private alertCtrl:AlertController,
+              private alunosService: AlunosService){
   }
   
   async ngOnInit() {
@@ -23,10 +24,10 @@ export class HomePage implements OnInit{
 
     await loading.present();
 
-    this.http.get<Aluno[]>('http://gilsonpolito-api.herokuapp.com/alunos')
+    this.alunosService.lista()
     .subscribe(
       (alunos)=>{
-        this.alunos = alunos;
+        this.alunos = alunos
       },
       async (err: HttpErrorResponse)=>{
         console.log('Deu erro ' + err.status);
@@ -44,5 +45,5 @@ export class HomePage implements OnInit{
       }
     )
   }
-
+  
 }

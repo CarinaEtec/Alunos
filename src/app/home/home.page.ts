@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpErrorResponse} from '@angular/common/http';
 import { Aluno } from '../escola/Aluno';
-import { LoadingController, AlertController } from '@ionic/angular';
+import { LoadingController, AlertController, NavController } from '@ionic/angular';
 import { AlunosService } from '../providers/alunos.service';
+import { NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,8 @@ export class HomePage implements OnInit{
 
   constructor(private loadingCtrl:LoadingController,
               private alertCtrl:AlertController,
-              private alunosService: AlunosService){
+              private alunosService: AlunosService,
+              private navCtrl: NavController){
   }
   
   async ngOnInit() {
@@ -27,7 +29,7 @@ export class HomePage implements OnInit{
     this.alunosService.lista()
     .subscribe(
       (alunos)=>{
-        this.alunos = alunos
+        this.alunos = alunos;
       },
       async (err: HttpErrorResponse)=>{
         console.log('Deu erro ' + err.status);
@@ -44,6 +46,18 @@ export class HomePage implements OnInit{
         loading.dismiss();
       }
     )
+  } 
+
+  selecionaAluno(aluno: Aluno){
+    console.log("Aluno selecionado: " + aluno.nome);
+
+    let extras: NavigationExtras = {
+      queryParams:{
+        alunoSelecionado: JSON.stringify(aluno)
+      }
+    };
+
+    this.navCtrl.navigateForward(['escolha'], extras);
   }
-  
+
 }

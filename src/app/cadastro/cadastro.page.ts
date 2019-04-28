@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Aluno } from '../escola/Aluno';
 import { ActivatedRoute } from '@angular/router';
 
+
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.page.html',
@@ -20,7 +21,4 @@ export class CadastroPage implements OnInit {
 
       });
   }
-
-
-
 }

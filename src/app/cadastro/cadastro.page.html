@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>cadastro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>Nome: {{aluno.nome}}</h2>
+  <p>Endereço: {{aluno.endereco}}</p>
+
+
+  <form>
+    <ion-item>
+      <ion-label position="stacked">Nome:</ion-label>
+      <ion-input name="nome"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Endereço:</ion-label>
+      <ion-input name="endereco"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label position="stacked">Site:</ion-label>
+        <ion-input name="site"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+          <ion-label position="stacked">Telefone:</ion-label>
+          <ion-input name="telefone"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+            <ion-label position="stacked">Nota:</ion-label>
+            <ion-input name="nota"></ion-input>
+      </ion-item>
+
+  </form>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="send"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+
+

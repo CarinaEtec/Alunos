@@ -1,13 +1,23 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>escolha</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content padding>
-  <ion-list>
-    <ion-item (click)="voltar()">
-      <h2>Voltar</h2>
-    </ion-item>
-  </ion-list>
-</ion-content>
+    <ion-toolbar>
+      <ion-title>escolha</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding>
+    
+    <ion-item-group>
+      <ion-item-divider color="light">
+        Aluno
+      </ion-item-divider>
+      <ion-item>Nome: {{aluno.nome}}</ion-item>
+      <ion-item>Endereço: {{aluno.endereco}}</ion-item>     
+    </ion-item-group>
+    
+    
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="avancaCadastro()">
+        <ion-icon name="arrow-dropright"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </ion-content>
